@@ -9,6 +9,7 @@ for(let i = 1; i <= gridSpace; i++){
     block.style.height = `calc(100%/${gridRow})`;
     block.setAttribute("id", "square" + i);
     block.style.border = "2px solid black"
+    block.style.boxSizing = "border-box";
     block.addEventListener("mouseover", function(e) {
         block.style.backgroundColor = "red";
     });
@@ -16,8 +17,33 @@ for(let i = 1; i <= gridSpace; i++){
     container.appendChild(block);
 }
 }
+createGrid(26);
 
-createGrid(16);
+function changeCanvas(){
+
+    gridRow = Number(prompt ("Please enter canvas width (max 100)"));
+
+    if (gridRow > 100){
+        alert("Please choose width lower than 100! Try Again");
+        changeCanvas();
+    }
+
+    const divs = container.querySelectorAll("div");
+
+    divs.forEach((div) =>{
+        container.removeChild(div);
+    });
+
+    createGrid(gridRow);
+
+/*    else{
+        alert("Please enter number! Try Again");
+        changeCanvas();
+    }*/   
+
+}
+
+
 /*const container = document.querySelector("#container");
 const divs = document.querySelectorAll("div");
 
