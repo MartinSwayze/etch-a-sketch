@@ -1,19 +1,23 @@
 const container = document.querySelector("#container");
 const divs = container.querySelectorAll("div");
+const colors = ["red", "green", "blue"];
+let randomColor = colors[Math.floor(Math.random() * 3)];
 
 function createGrid(gridRow){
 let gridSpace = gridRow * gridRow;
 for(let i = 1; i <= gridSpace; i++){
+
     const block = document.createElement("div");
+    let randomColor = colors[Math.floor(Math.random() * 3)];
     block.style.width = `calc(100%/${gridRow})`;
     block.style.height = `calc(100%/${gridRow})`;
     block.setAttribute("id", "square" + i);
-    block.style.border = "2px solid black"
+
     block.style.boxSizing = "border-box";
-    block.addEventListener("mouseover", function(e) {
-        block.style.backgroundColor = "red";
+    block.addEventListener("mouseover", () => {
+        block.style.backgroundColor = randomColor;
     });
-    
+
     container.appendChild(block);
 }
 }
@@ -27,6 +31,11 @@ function changeCanvas(){
         alert("Please choose width lower than 100! Try Again");
         changeCanvas();
     }
+    else if (!Number.isInteger(gridRow)){
+        alert("Please enter number! Try Again");
+        changeCanvas();
+    }  
+
 
     const divs = container.querySelectorAll("div");
 
@@ -35,34 +44,4 @@ function changeCanvas(){
     });
 
     createGrid(gridRow);
-
-/*    else{
-        alert("Please enter number! Try Again");
-        changeCanvas();
-    }*/   
-
 }
-
-
-/*const container = document.querySelector("#container");
-const divs = document.querySelectorAll("div");
-
-function createGrid(){
-for(let i = 1; i <= 256; i++){
-    const block = document.createElement("div");
-    block.setAttribute("id", "square" + i);
-    block.style.border = "2px solid black"
-    block.style.padding = "2.8%";
-    
-    container.appendChild(block);
-}
-}
-
-createGrid();
-
-divs.forEach((div) => {
-    // and for each one we add a 'click' listener
-    div.addEventListener("mouseover", () => {
-        console.log("YAYA");
-    });
-});*/
