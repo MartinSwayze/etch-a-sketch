@@ -1,20 +1,33 @@
 body{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100%;
+    gap: 10px;
     width: 100%;
+    background-color: lightblue;
+}
+
+h1{
+    margin: 0;
 }
 
 #container{
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    max-width: 700px;
+    width: 100%;
+    height: 700px;
+    padding: 1px;
+    border: 2px solid brown;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    box-sizing: border-box;
 }
 
-.square{
-    border: 2px solid black;
-    padding: 2.6%;
+
+
+#navigation{
+    margin-left: auto;
+    padding-right: 20px;
 }
